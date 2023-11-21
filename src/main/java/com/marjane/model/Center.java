@@ -10,21 +10,16 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "centers")
 public class Center {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name;
+    private String cityName;
 
-    @ManyToOne
-    @JoinColumn(name = "admin_id")
-    private Admin admin;
+    @OneToMany(mappedBy = "marjaneCenter")
+    private List<Manager> departmentManagers;
 
-    @OneToMany(mappedBy = "center")
-    private List<Promotion> promotions;
+    @OneToMany(mappedBy = "marjaneCenter")
+    private List<Cashier> cashiers;
 
-    public Center(String name) {
-        this.name = name;
-    }
 }

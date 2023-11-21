@@ -6,26 +6,18 @@ import jakarta.persistence.*;
 
 import java.util.Set;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Builder
-public class Manager {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String email;
-
-    private String password;
+public class Manager extends User {
 
     @OneToMany(mappedBy = "manager")
     private Set<Center> managedCenters;
 
-    public Manager(String email, String password, Set<Center> managedCenters) {
-        this.email = email;
-        this.password = password;
+    public Manager(Set<Center> managedCenters) {
+        super();
         this.managedCenters = managedCenters;
     }
 }
