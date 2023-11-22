@@ -10,12 +10,15 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @DiscriminatorValue("customer")
-public class Customer extends User {
-    // Customer-specific fields and methods
+public class Customer extends Users {
 
     @OneToOne(mappedBy = "customer")
     private LoyaltyCard loyaltyCard;
 
     @OneToMany(mappedBy = "customer")
     private List<CustomerPurchase> customerPurchases;
+
+    public Customer(String name, String email, String password) {
+        super(name, email, password);
+    }
 }

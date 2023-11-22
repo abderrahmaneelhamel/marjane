@@ -23,7 +23,6 @@ public class AdminService {
     }
 
     public Admin createAdmin(Admin admin) {
-        // Add any business logic or validation if needed
         return adminRepository.save(admin);
     }
 

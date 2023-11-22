@@ -12,8 +12,8 @@ public class PromotionApproval {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "department_manager_id")
-    private Manager departmentManager;
+    @JoinColumn(name = "manager_id")
+    private Manager manager;
 
     @ManyToOne
     @JoinColumn(name = "promotion_id")

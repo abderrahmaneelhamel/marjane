@@ -1,5 +1,6 @@
 package com.marjane.controller;
 
+import com.marjane.dto.CenterDto;
 import com.marjane.model.Center;
 import com.marjane.service.CenterService;
 import lombok.RequiredArgsConstructor;
@@ -33,14 +34,14 @@ public class CenterController {
 
     @PostMapping
     public ResponseEntity<Center> createCenter(@Validated @RequestBody Map<String, String> request) {
-        Center center = new Center(request.get("name"));
+        CenterDto center = new CenterDto(request.get("name"));
         Center createdCenter = centerService.createCenter(center);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdCenter);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Center> updateCenter(@PathVariable Long id, @Validated @RequestBody Map<String, String> request) {
-        Center center = new Center(request.get("name"));
+        CenterDto center = new CenterDto(request.get("name"));
         Center updatedCenter = centerService.updateCenter(id, center);
         return ResponseEntity.ok(updatedCenter);
     }

@@ -1,5 +1,6 @@
 package com.marjane.controller;
 
+import com.marjane.dto.ManagerDto;
 import com.marjane.model.Manager;
 import com.marjane.service.ManagerService;
 import lombok.RequiredArgsConstructor;
@@ -33,10 +34,7 @@ public class ManagerController {
 
     @PostMapping
     public ResponseEntity<Manager> createManager(@Validated @RequestBody HashMap<String, String> request) {
-        Manager manager = Manager.builder()
-                .email(request.get("email"))
-                .password(request.get("password"))
-                .build();
+        ManagerDto manager = new ManagerDto(request.get("name"), request.get("email"), request.get("password"));
 
         Manager createdManager = managerService.createManager(manager);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdManager);
@@ -44,10 +42,7 @@ public class ManagerController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Manager> updateManager(@PathVariable Long id, @Validated @RequestBody HashMap<String, String> request) {
-        Manager manager = Manager.builder()
-                .email(request.get("email"))
-                .password(request.get("password"))
-                .build();
+        ManagerDto manager = new ManagerDto(request.get("name"), request.get("email"), request.get("password"));
 
         Manager updatedManager = managerService.updateManager(id, manager);
         return ResponseEntity.ok(updatedManager);

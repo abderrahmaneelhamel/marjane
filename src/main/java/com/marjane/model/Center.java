@@ -16,10 +16,11 @@ public class Center {
 
     private String cityName;
 
-    @OneToMany(mappedBy = "marjaneCenter")
-    private List<Manager> departmentManagers;
+    @ManyToOne
+    @JoinColumn(name = "manager_id")
+    private Manager manager;
 
-    @OneToMany(mappedBy = "marjaneCenter")
+    @OneToMany(mappedBy = "center")
     private List<Cashier> cashiers;
 
 }

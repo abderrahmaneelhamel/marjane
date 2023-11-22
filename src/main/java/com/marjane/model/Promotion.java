@@ -4,6 +4,7 @@ import lombok.*;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -33,14 +34,17 @@ public class Promotion {
     private int quantityThreshold;
 
     @ManyToOne
-    @JoinColumn(name = "center_id")
-    private Center center;
+    @JoinColumn(name = "admin_id")
+    private Admin admin;
 
     @ManyToOne
-    @JoinColumn(name = "multimedia_product_id")
+    @JoinColumn(name = "product_id")
     private Product product;
 
-    public Promotion(String productCategory, String promotionDescription, LocalDateTime startTime, LocalDateTime endTime, double discountPercentage, int quantity, double loyaltyPointsEarned, int quantityThreshold, Center center, Product product) {
+    @OneToMany(mappedBy = "promotion")
+    private List<PromotionApproval> promotionApprovals;
+
+    public Promotion(String productCategory, String promotionDescription, LocalDateTime startTime, LocalDateTime endTime, double discountPercentage, int quantity, double loyaltyPointsEarned, int quantityThreshold, Product product) {
         this.productCategory = productCategory;
         this.promotionDescription = promotionDescription;
         this.startTime = startTime;
@@ -49,7 +53,6 @@ public class Promotion {
         this.quantity = quantity;
         this.loyaltyPointsEarned = loyaltyPointsEarned;
         this.quantityThreshold = quantityThreshold;
-        this.center = center;
         this.product = product;
     }
 }

@@ -1,6 +1,9 @@
 package com.marjane.service;
 
+import com.marjane.dto.CenterDto;
+import com.marjane.dto.CustomerDto;
 import com.marjane.model.Center;
+import com.marjane.model.Customer;
 import com.marjane.repository.CenterRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,15 +24,16 @@ public class CenterService {
         return centerRepository.findById(id).orElse(null);
     }
 
-    public Center createCenter(Center center) {
-        return centerRepository.save(center);
+    public Center createCenter(CenterDto center) {
+        Center updatedCenter = this.convertToEntity(center);
+        return centerRepository.save(updatedCenter);
     }
 
-    public Center updateCenter(Long id, Center updatedCenter) {
+    public Center updateCenter(Long id, CenterDto updatedCenter) {
         Center existingCenter = getCenterById(id);
         if (existingCenter != null) {
-            existingCenter.setName(updatedCenter.getName());
-            // Add other fields as needed
+            existingCenter.setCityName(updatedCenter.getCityName());
+
             return centerRepository.save(existingCenter);
         }
         return null;
@@ -37,5 +41,13 @@ public class CenterService {
 
     public void deleteCenter(Long id) {
         centerRepository.deleteById(id);
+    }
+
+    private Center convertToEntity(CenterDto centerDto) {
+        Center entity = new Center();
+        entity.setId(centerDto.getId());
+        entity.setCityName(centerDto.getCityName());
+
+        return entity;
     }
 }

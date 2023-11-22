@@ -11,11 +11,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @DiscriminatorValue("admin")
-public class Admin extends User {
+public class Admin extends Users {
 
-    @OneToMany(mappedBy = "admin")
+    @OneToMany
     private List<Promotion> promotions;
 
-    @OneToMany(mappedBy = "admin")
-    private List<Center> centers;
+    public Admin(String name, String email, String password) {
+        super(name, email, password);
+    }
 }

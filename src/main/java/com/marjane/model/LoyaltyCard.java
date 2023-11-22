@@ -2,6 +2,9 @@ package com.marjane.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -11,10 +14,13 @@ public class LoyaltyCard {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String cardCode;
+
     @OneToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    private String cardCode;
+    @OneToMany(mappedBy = "loyaltyCard")
+    private List<LoyaltyPoints> loyaltyPoints;
 
 }

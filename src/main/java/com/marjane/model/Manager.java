@@ -4,20 +4,24 @@ import lombok.*;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-public class Manager extends User {
+public class Manager extends Users {
 
-    @OneToMany(mappedBy = "manager")
+    @OneToMany
     private Set<Center> managedCenters;
 
-    public Manager(Set<Center> managedCenters) {
-        super();
-        this.managedCenters = managedCenters;
+    @OneToMany
+    private List<PromotionApproval> promotionApprovals;
+
+    public Manager(String name, String email, String password) {
+        super(name, email, password);
     }
 }

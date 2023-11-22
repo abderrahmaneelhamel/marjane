@@ -1,5 +1,8 @@
 package com.marjane.service;
 
+import com.marjane.dto.CenterDto;
+import com.marjane.dto.ManagerDto;
+import com.marjane.model.Center;
 import com.marjane.model.Manager;
 import com.marjane.repository.ManagerRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,13 +25,12 @@ public class ManagerService {
                 .orElseThrow(() -> new RuntimeException("Manager not found with id: " + id));
     }
 
-    public Manager createManager(Manager manager) {
-        // Add any business logic or validation if needed
-        return managerRepository.save(manager);
+    public Manager createManager(ManagerDto manager) {
+        Manager updatedManager = this.convertToEntity(manager);
+        return managerRepository.save(updatedManager);
     }
 
-    public Manager updateManager(Long id, Manager manager) {
-        // Add any business logic or validation if needed
+    public Manager updateManager(Long id, ManagerDto manager) {
         Manager existingManager = getManagerById(id);
         existingManager.setEmail(manager.getEmail());
         existingManager.setPassword(manager.getPassword());
@@ -36,7 +38,16 @@ public class ManagerService {
     }
 
     public void deleteManager(Long id) {
-        // Add any business logic or validation if needed
         managerRepository.deleteById(id);
+    }
+
+    private Manager convertToEntity(ManagerDto managerDto) {
+        Manager entity = new Manager();
+        entity.setId(managerDto.getId());
+        entity.setEmail(managerDto.getEmail());
+        entity.setName(managerDto.getName());
+        entity.setPassword(managerDto.getPassword());
+
+        return entity;
     }
 }

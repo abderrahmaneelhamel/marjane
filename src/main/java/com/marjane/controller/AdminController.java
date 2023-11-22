@@ -33,14 +33,14 @@ public class AdminController {
 
     @PostMapping
     public ResponseEntity<Admin> createAdmin(@Validated @RequestBody HashMap<String, String> request) {
-        Admin admin = new Admin(request.get("email"), request.get("password"));
+        Admin admin = new Admin(request.get("name"), request.get("password"),request.get("email"));
         Admin createdAdmin = adminService.createAdmin(admin);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdAdmin);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Admin> updateAdmin(@PathVariable Long id, @Validated @RequestBody HashMap<String, String> request) {
-        Admin admin = new Admin(request.get("email"), request.get("password"));
+        Admin admin = new Admin(request.get("name"), request.get("password"),request.get("email"));
         Admin updatedAdmin = adminService.updateAdmin(id, admin);
         return ResponseEntity.ok(updatedAdmin);
     }

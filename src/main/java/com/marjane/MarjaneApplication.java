@@ -13,13 +13,4 @@ public class MarjaneApplication {
 		SpringApplication.run(MarjaneApplication.class, args);
 	}
 
-	@Bean
-	public DataSource dataSource() {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setUrl("jdbc:postgresql://localhost:5432/marjane");
-		dataSource.setUsername("postgres");
-		dataSource.setPassword("admin");
-		return dataSource;
-	}
-
 }

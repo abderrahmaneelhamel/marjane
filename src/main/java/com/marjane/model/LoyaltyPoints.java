@@ -18,11 +18,10 @@ public class LoyaltyPoints {
     private int points;
 
     @ManyToOne
-    @JoinColumn(name = "admin_id")
-    private Admin admin;
+    @JoinColumn(name = "loyalty_card_id")
+    private LoyaltyCard loyaltyCard;
 
-    public LoyaltyPoints(int points, Admin admin) {
+    public LoyaltyPoints(int points) {
         this.points = points;
-        this.admin = admin;
     }
 }

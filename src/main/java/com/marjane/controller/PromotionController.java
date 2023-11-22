@@ -41,7 +41,6 @@ public class PromotionController {
 
     @PostMapping
     public ResponseEntity<Promotion> createPromotion(@Validated @RequestBody Map<String, String> request) {
-        Center center = centerService.getCenterById(Long.parseLong(request.get("centerId")));
         Product product = productService.getProductById(Long.parseLong(request.get("multimediaProductId")));
 
         Promotion promotion = new Promotion(
@@ -53,7 +52,6 @@ public class PromotionController {
                 Integer.parseInt(request.get("Quantity")),
                 Double.parseDouble(request.get("LoyaltyPointsEarned")),
                 Integer.parseInt(request.get("QuantityThreshold")),
-                center,
                 product
         );
 
@@ -63,7 +61,6 @@ public class PromotionController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Promotion> updatePromotion(@PathVariable Long id, @Validated @RequestBody Map<String, String> request) {
-        Center center = centerService.getCenterById(Long.parseLong(request.get("centerId")));
         Product product = productService.getProductById(Long.parseLong(request.get("multimediaProductId")));
 
         Promotion promotion = new Promotion(
@@ -75,7 +72,6 @@ public class PromotionController {
                 Integer.parseInt(request.get("Quantity")),
                 Double.parseDouble(request.get("LoyaltyPointsEarned")),
                 Integer.parseInt(request.get("QuantityThreshold")),
-                center,
                 product
         );
 

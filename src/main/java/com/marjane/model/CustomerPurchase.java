@@ -22,7 +22,4 @@ public class CustomerPurchase {
     @JoinColumn(name = "cashier_id")
     private Cashier cashier;
 
-    @OneToMany(mappedBy = "customerPurchase")
-    private List<PromotionApproval> promotionApprovals;
-
 }
