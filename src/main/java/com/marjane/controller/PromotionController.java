@@ -17,13 +17,12 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/promotions")
+@RequestMapping("/api/v3/promotions")
 @RequiredArgsConstructor
 @Validated
 public class PromotionController {
 
     private final PromotionService promotionService;
-    private final CenterService centerService;
     private final ProductService productService;
 
 
@@ -51,7 +50,6 @@ public class PromotionController {
                 Double.parseDouble(request.get("DiscountPercentage")),
                 Integer.parseInt(request.get("Quantity")),
                 Double.parseDouble(request.get("LoyaltyPointsEarned")),
-                Integer.parseInt(request.get("QuantityThreshold")),
                 product
         );
 
@@ -71,7 +69,6 @@ public class PromotionController {
                 Double.parseDouble(request.get("DiscountPercentage")),
                 Integer.parseInt(request.get("Quantity")),
                 Double.parseDouble(request.get("LoyaltyPointsEarned")),
-                Integer.parseInt(request.get("QuantityThreshold")),
                 product
         );
 

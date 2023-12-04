@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/managers")
+@RequestMapping("/api/v3/responsibles")
 @RequiredArgsConstructor
 @Validated
 public class ManagerController {

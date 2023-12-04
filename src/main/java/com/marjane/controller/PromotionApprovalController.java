@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/promotion-approvals")
+@RequestMapping("/api/v3/promotion-approvals")
 public class PromotionApprovalController {
 
     private final PromotionApprovalService promotionApprovalService;

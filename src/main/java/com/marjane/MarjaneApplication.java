@@ -8,9 +8,7 @@ import javax.sql.DataSource;
 
 @SpringBootApplication
 public class MarjaneApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(MarjaneApplication.class, args);
 	}
-
 }

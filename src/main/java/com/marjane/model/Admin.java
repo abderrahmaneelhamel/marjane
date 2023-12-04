@@ -19,4 +19,7 @@ public class Admin extends Users {
     public Admin(String name, String email, String password) {
         super(name, email, password);
     }
+    public Admin(Long id,String name, String email, String password) {
+        super(id,name, email, password);
+    }
 }

@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/customer-purchases")
+@RequestMapping("/api/v3/customer-purchases")
 public class CustomerPurchaseController {
 
     private final CustomerPurchaseService customerPurchaseService;

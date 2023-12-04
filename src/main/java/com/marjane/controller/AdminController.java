@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/admins")
+@RequestMapping("/api/v3/admins")
 @RequiredArgsConstructor
 @Validated
 public class AdminController {
@@ -33,7 +33,7 @@ public class AdminController {
 
     @PostMapping
     public ResponseEntity<Admin> createAdmin(@Validated @RequestBody HashMap<String, String> request) {
-        Admin admin = new Admin(request.get("name"), request.get("password"),request.get("email"));
+        Admin admin = new Admin(request.get("name"),request.get("email"), request.get("password"));
         Admin createdAdmin = adminService.createAdmin(admin);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdAdmin);
     }

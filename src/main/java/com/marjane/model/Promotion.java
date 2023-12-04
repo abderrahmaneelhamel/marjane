@@ -31,7 +31,6 @@ public class Promotion {
     private int quantity;
 
     private double loyaltyPointsEarned;
-    private int quantityThreshold;
 
     @ManyToOne
     @JoinColumn(name = "admin_id")
@@ -44,7 +43,7 @@ public class Promotion {
     @OneToMany(mappedBy = "promotion")
     private List<PromotionApproval> promotionApprovals;
 
-    public Promotion(String productCategory, String promotionDescription, LocalDateTime startTime, LocalDateTime endTime, double discountPercentage, int quantity, double loyaltyPointsEarned, int quantityThreshold, Product product) {
+    public Promotion(String productCategory, String promotionDescription, LocalDateTime startTime, LocalDateTime endTime, double discountPercentage, int quantity, double loyaltyPointsEarned, Product product) {
         this.productCategory = productCategory;
         this.promotionDescription = promotionDescription;
         this.startTime = startTime;
@@ -52,7 +51,6 @@ public class Promotion {
         this.discountPercentage = discountPercentage;
         this.quantity = quantity;
         this.loyaltyPointsEarned = loyaltyPointsEarned;
-        this.quantityThreshold = quantityThreshold;
         this.product = product;
     }
 }

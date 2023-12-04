@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/loyalty-cards")
+@RequestMapping("/api/v3/loyalty-cards")
 public class LoyaltyCardController {
 
     private final LoyaltyCardService loyaltyCardService;

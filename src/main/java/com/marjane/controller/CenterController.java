@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/centers")
+@RequestMapping("/api/v3/centers")
 @RequiredArgsConstructor
 @Validated
 public class CenterController {
